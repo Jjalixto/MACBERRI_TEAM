@@ -1,6 +1,6 @@
 
 <?php 
-include 'database/db.php';
+include "library/conexion.php";
 
 if(isset($_POST['email'])){
         $email = $_POST['email'];

@@ -1,5 +1,5 @@
 <?php
-include 'database/db.php';
+include "library/conexion.php";
         $correo = $_POST['email'];
         $clave = $_POST['password'];
         $clave = hash('sha512',$clave);

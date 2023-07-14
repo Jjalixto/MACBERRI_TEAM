@@ -6,7 +6,7 @@
     }
 ?>
 
-<?php include 'database/db.php';;?>
+<?php include 'library/conexion.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +18,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </head>
 <body>
-
-    <?php include("nav.php")?> 
-
-    <h1>Please Login or SingUP</h1>
-    <a href="login.php">Login</a>
-    <br>
-    <a href="singup.php">SingUP</a>
-    <br>
-    <a href="recuperarClave.php">Recuperar Clave</a>
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase  mb-4">Please Login or SingUP</h2>
+              <div class="form-outline form-white mb-4">
+              <button type="button" class="btn btn-outline-light btn-lg px-5"><a href="login.php">Login</a></button>
+              </div>
+              <div class="form-outline form-white mb-4">
+              <button type="button" class="btn btn-outline-light btn-lg px-5"><a href="singup.php">SingUP</a></button>
+              </div>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit"><a href="recuperarClave.php">Recuperar Clave</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
+
+
+
+
+
