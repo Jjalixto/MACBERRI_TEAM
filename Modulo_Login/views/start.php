@@ -6,7 +6,7 @@
     }
 ?>
 
-<?php include 'library/conexion.php' ?>
+<?php include '../library/conexion.php'?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +42,3 @@
 </section>
 </body>
 </html>
-
-
-
-
-
