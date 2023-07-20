@@ -10,7 +10,7 @@
 // 	or die ('Could not connect to the database server' . mysqli_connect_error());
 
 //otra forma de adquirir datos de "BD"
-$con = mysqli_connect("localhost", "root", "root", "world");
+$mysqli = mysqli_connect("localhost", "root", "root", "world");
 // if ($con) {
 //     echo "YES";
 // } else {
