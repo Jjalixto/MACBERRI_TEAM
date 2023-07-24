@@ -40,7 +40,8 @@ include ("../sentencia.php");
                     <th scope="col">NAME OF CITY</th>
                     <th scope="col">DISTRIC</th>
                     <th scope="col">POPULATION</th>
-                    <th scope="col">REPORTE</th>
+                    <th scope="col">REPORTE EN PDF</th>
+                    <th scope="col">REPORTE EN EXCEL</th>
                 </tr>
             </thead>
         <tbody>
@@ -52,7 +53,8 @@ include ("../sentencia.php");
                             <td><?php echo $data_set['name'] ?></td>
                             <td><?php echo $data_set['district'] ?></td>
                             <td><?php echo $data_set['population'] ?></td>
-                            <th><a href="reporte2.php?id=<?php echo $data_set['id']?>">Generar Reporte</a></th>
+                            <th><a href="reporte2.php?id=<?php echo $data_set['id']?>">PDF</a></th>
+                            <th><a href="create_excel.php?id=<?php echo $data_set['id']?>">EXCEL</a></th>
                         </tr>
                         <?php }?>
         </tbody>
