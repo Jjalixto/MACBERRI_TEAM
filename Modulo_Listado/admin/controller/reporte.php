@@ -1,11 +1,12 @@
 <?php 
 
-require '../conex.php';
-require '../plantilla.php';
+include '../modelo/conexion.php';
+include '../controller/plantilla.php';
 
-$id = $_GET['id'];
+$id = $_POST['numero'];
+
 $sql = "SELECT id,name,country_code,district FROM cities WHERE id like '$id'";
-$resultado = mysqli_query($mysqli,$sql);
+$resultado = mysqli_query($conexion,$sql);
 
 $pdf = new PDF("P","mm","letter");
 $pdf->AliasNbPages();

@@ -1,10 +1,16 @@
+<?php
+      include "../modelo/conexion.php"; 
+      include "../controller/modificar_persona.php";
+      $id = $_GET["id"];
+      // echo $id; obtener id mandado
+      $sql = $conexion->query("SELECT * FROM persona WHERE id = '$id'");      
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Listado PHP</title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -12,7 +18,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -160,7 +166,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin-LTE</span>
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
     <!-- Sidebar -->
@@ -173,7 +179,19 @@
         <div class="info">
           <a href="#" class="d-block">Joel Jalixto</a>
         </div>
-      </div>  
+      </div>
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -195,20 +213,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="view/index.php" class="nav-link">
+                <a href="index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>R-Personas</p>
                 </a>
-                <li class="nav-item">
-                <a href="view/cliente.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cargar datos de clientes</p>
-                </a>
-              </li>
               </li>
             </ul>
           </li>
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -222,57 +233,41 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <!-- <div class="col-sm-6">
-            <h1 class="m-0">Search Id</h1>
-          </div>/.col -->
+          <div class="col-sm-6">
+          </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    <?php 
-    include("modelo/conexion.php");
-    $select_bd = "SELECT * FROM cities";
-    $res_consult = mysqli_query($conexion, $select_bd);
-?>
-  <div class="d-flex">
-      <?php include "controller/sentencia.php";?>
-      <label class="text-primary h1 ">Busca tu ID</label>
-      <input class="m-2 p-1" type="text" name="register" id="register" onchange="setViewTable">
-      <td>   
-          <button class="m-2 p-1 btn btn-primary btn-lg" onclick="setViewTable()">Buscar</button>
-          <a href="../admin/controller/reporte_total.php" target="_blank">Exportar todo en PDF</a>
-          <!-- <a href="../admin/view/registro_total_excel.php" name="export">EXCEL</a> -->
-        </td>
-    </div>
-    <div id="main"></div>
-    <h2 id="msg"></h2>
-        <script>
-            function setViewTable(){
-                var registerInput = document.getElementById("register").value;
-                var dataen = 'register=' + registerInput;
-                $.ajax({
-                    type: 'POST',
-                    url: 'view/viewTable.php',
-                    data: dataen,
-                    success: function(resp){
-                        $('#main').html(resp);
-                    }
-                });
-            }
-            setViewTable();
-            </script>
-                <!-- <script type ="text/javascript">
-        $(document).ready(function () {
-        $("#register").keyup(function () {
-            var value = $(this).val();
-            $("#numero").val(value);
-        });
-});
-        </script> -->
-</div>
-<!-- /.content-wrapper -->
-
+    <form class="col-4 p-3 m-auto" method="POST">
+            <h3 class="text-center text-secondary h1">Editar datos</h3>
+            <input type="hidden" name ="id" value ="<?= $_GET["id"] ?>">
+                <?php 
+                    while($datos=$sql->fetch_object()){ ?>
+                <div class="mb-1">
+                    <label for="exampleInputEmail1" class="form-label">Nombre de la persona</label>
+                    <input type="text" class="form-control" name="nombre" value="<?=$datos->name ?>">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleInputEmail1" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" name="apellido" value="<?=$datos->last_name ?>">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleInputEmail1" class="form-label">DNI de la persona</label>
+                    <input type="text" class="form-control" name="dni" value="<?=$datos->dni ?>">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" name="fecha" value="<?=$datos->fecha_nac ?>">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleInputEmail1" class="form-label">Correo</label>
+                    <input type="text" class="form-control" name="correo" value="<?=$datos->correo ?>">
+            </div>
+                    <?php }
+                ?>
+            <button  type="submit" class="btn btn-primary mt-2" name="btnregistrar" value="ok">Guardar datos</button>
+    </form>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -281,5 +276,23 @@
     <p>Sidebar content</p>
     </div>
 </aside>
+<!-- Main Footer -->
+<footer class="main-footer m-0">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+    Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+</footer>
+</div>
+<!-- ./wrapper -->
 </body>
 </html>
+
+
+
+
+
+
+

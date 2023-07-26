@@ -4,7 +4,7 @@
 	header("Pragma: no-cache"); 
 	header("Expires: 0");
 
-	require "../conex.php";
+	require "../modelo/conexion.php";
 	
 	$output = "";
 	$id = $_GET['id'];
@@ -21,7 +21,7 @@
 				<tbody>
 		";
 		
-		$query = mysqli_query($mysqli, "SELECT id,name,district,population FROM cities WHERE id like '$id'");
+		$query = mysqli_query($conexion, "SELECT id,name,district,population FROM cities WHERE id like '$id'");
 		while($fetch = mysqli_fetch_array($query)){
 			
 		$output .= "

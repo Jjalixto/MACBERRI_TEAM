@@ -8,9 +8,10 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </head>
@@ -25,7 +26,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/principal/listado.php" class="nav-link">Home</a>
+        <a href="../plantilla_base.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -66,7 +67,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -82,7 +83,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -98,7 +99,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -158,8 +159,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="#" class="brand-link">
+      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin-LTE</span>
     </a>
 
@@ -168,7 +169,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Joel Jalixto</a>
@@ -189,18 +190,18 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="plantilla_base.php" class="nav-link active">
+                <a href="../plantilla_base.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>City of ID</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="view/index.php" class="nav-link">
+                <a href="index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>R-Personas</p>
                 </a>
                 <li class="nav-item">
-                <a href="view/cliente.php" class="nav-link">
+                <a href="cliente.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cargar datos de clientes</p>
                 </a>
@@ -229,49 +230,52 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    <script>
+        function eliminar(){
+            var respuesta = confirm("Are you sure you want to delete")
+            return respuesta;
+        }
+    </script>
     <?php 
-    include("modelo/conexion.php");
-    $select_bd = "SELECT * FROM cities";
-    $res_consult = mysqli_query($conexion, $select_bd);
-?>
-  <div class="d-flex">
-      <?php include "controller/sentencia.php";?>
-      <label class="text-primary h1 ">Busca tu ID</label>
-      <input class="m-2 p-1" type="text" name="register" id="register" onchange="setViewTable">
-      <td>   
-          <button class="m-2 p-1 btn btn-primary btn-lg" onclick="setViewTable()">Buscar</button>
-          <a href="../admin/controller/reporte_total.php" target="_blank">Exportar todo en PDF</a>
-          <!-- <a href="../admin/view/registro_total_excel.php" name="export">EXCEL</a> -->
-        </td>
-    </div>
-    <div id="main"></div>
-    <h2 id="msg"></h2>
-        <script>
-            function setViewTable(){
-                var registerInput = document.getElementById("register").value;
-                var dataen = 'register=' + registerInput;
-                $.ajax({
-                    type: 'POST',
-                    url: 'view/viewTable.php',
-                    data: dataen,
-                    success: function(resp){
-                        $('#main').html(resp);
-                    }
-                });
-            }
-            setViewTable();
-            </script>
-                <!-- <script type ="text/javascript">
-        $(document).ready(function () {
-        $("#register").keyup(function () {
-            var value = $(this).val();
-            $("#numero").val(value);
-        });
-});
-        </script> -->
+    include "../modelo/conexion.php";
+    include "../controller/eliminar persona.php"?>
+    <div class="container-fluid row">
+        <div class="col-8 p-4">
+        <h3 class="text-center text-secondary">Clientes registrados</h3>
+        <a class="btn btn-primary m-2" href="registrar_clientes.php" role="button">Crear cliente</a>
+                <table class="table">
+                    <thead class="bg-info">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last name</th>
+                            <th scope="col">DNI</th>
+                            <th scope="col">FECHA DE NAC.</th>
+                            <th scope="col">CORREO</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql =$conexion->query("SELECT * FROM persona");
+                        while($datos=$sql->fetch_object()){ ?>
+                            <tr>
+                                <td><?=$datos->id ?></td>
+                                <td><?=$datos->name ?></td>
+                                <td><?=$datos->last_name?></td>
+                                <td><?=$datos->dni ?></td>
+                                <td><?=$datos->fecha_nac ?></td>
+                                <td><?=$datos->correo ?></td>
+                                <td>
+                                    <a href="modificar.php?id=<?=$datos->id ?>" class="btn btn-small btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a onclick="return eliminar()" href="index.php?id=<?= $datos->id ?>" class="btn btn-small btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php }
+                        ?>
+                    </tbody>
+        </table>
 </div>
-<!-- /.content-wrapper -->
 
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">

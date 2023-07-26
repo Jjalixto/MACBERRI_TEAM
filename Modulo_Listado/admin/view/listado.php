@@ -1,7 +1,7 @@
 <?php 
-    include("conex.php");
+    include("../modelo/conexion.php");
     $select_bd = "SELECT * FROM cities";
-    $res_consult = mysqli_query($mysqli, $select_bd);
+    $res_consult = mysqli_query($conexion, $select_bd);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </head>
 <body>
-    <?php include ("sentencia.php");?>
+    <?php include "../controller/sentencia.php";?>
     <label>Your ID</label>
     <input type="text" name="register" id="register" onchange="setViewTable">
     <td>   

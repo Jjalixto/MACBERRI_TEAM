@@ -1,28 +1,22 @@
-<?php
-      include "modelo/conexion.php"; 
-      include "controlador/modificar_persona.php";
-      $id = $_GET["id"];
-      // echo $id; obtener id mandado
-      $sql = $conexion->query("SELECT * FROM persona WHERE id = '$id'");      
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Listado PHP</title>
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -31,13 +25,12 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/principal/listado.php" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -61,7 +54,6 @@
           </form>
         </div>
       </li>
-
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -72,7 +64,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -88,7 +80,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -104,7 +96,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -160,38 +152,23 @@
     </ul>
   </nav>
   <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="#" class="brand-link">
+      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Admin-LTE</span>
     </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Joel Jalixto</a>
         </div>
       </div>
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -207,7 +184,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="plantilla_base.php" class="nav-link active">
+                <a href="../plantilla_base.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>City of ID</p>
                 </a>
@@ -218,6 +195,12 @@
                   <p>R-Personas</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="cliente.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Cargar datos de clientes</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -226,59 +209,72 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <!-- <div class="col-sm-6">
-            <h1 class="m-0">Starter Page</h1>
-          </div>/.col -->
-          <div class="col-sm-6">
-            <!-- <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Starter Page</li>
-            </ol> -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+    <div class="cargando">
+    <div class="loader-outter"></div>
+    <div class="loader-inner"></div>
+  </div>
+<div class="container">
+<h3 class="text-center">
+    Exportar de EXCEL a PHP
+</h3>
+<hr>
+<br><br>
+<?php include ('../modelo/conexion.php');?>
+<div class="row">
+    <div class="col-md-7">
+      <form  id = "formulario" action="../controller/subir_excel.php" method="POST" enctype="multipart/form-data" >  
+        <div class="file-input text-center">
+            <input  type="file" name="dataCliente" id="file-input" class="file-input__input"/>
+            <label class="file-input__label" for="file-input">
+              <i class="zmdi zmdi-upload zmdi-hc-2x"></i>
+              <span>Elegir Archivo Excel</span></label>
+          </div>
+      <div class="text-center mt-5">
+          <input type="submit" name="subir" class="btn-enviar" value="Cargar datos"/>
+      </div>
+      </form>
     </div>
-    <!-- /.content-header -->
-  
-    <form class="col-4 p-3 m-auto" method="POST">
-            <h3 class="text-center text-secondary h1">Editar datos</h3>
-            <input type="hidden" name ="id" value ="<?= $_GET["id"] ?>">
-                <?php 
-                
-                    while($datos=$sql->fetch_object()){ ?>
-                <div class="mb-1">
-                    <label for="exampleInputEmail1" class="form-label">Nombre de la persona</label>
-                    <input type="text" class="form-control" name="nombre" value="<?=$datos->name ?>">
-                </div>
-                <div class="mb-1">
-                    <label for="exampleInputEmail1" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" name="apellido" value="<?=$datos->last_name ?>">
-                </div>
-                <div class="mb-1">
-                    <label for="exampleInputEmail1" class="form-label">DNI de la persona</label>
-                    <input type="text" class="form-control" name="dni" value="<?=$datos->dni ?>">
-                </div>
-                <div class="mb-1">
-                    <label for="exampleInputEmail1" class="form-label">Fecha de nacimiento</label>
-                    <input type="date" class="form-control" name="fecha" value="<?=$datos->fecha_nac ?>">
-                </div>
-                <div class="mb-1">
-                    <label for="exampleInputEmail1" class="form-label">Correo</label>
-                    <input type="text" class="form-control" name="correo" value="<?=$datos->correo ?>">
-            </div>
-                    <?php }
-                ?>
+    <div class="col-md-5">
+  <?php
 
-            <button  type="submit" class="btn btn-primary mt-2" name="btnregistrar" value="ok">Guardar datos</button>
-    </form>
-
+  $sqlClientes = ("SELECT * FROM persona ORDER BY id ASC");
+  $queryData   = mysqli_query($conexion, $sqlClientes);
+  $total_client = mysqli_num_rows($queryData);
+  ?>
+      <h6 class="text-center">
+        Lista de Clientes <strong>(<?php echo $total_client; ?>)</strong>
+      </h6>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Dni</th>
+              <th>Fecha de nac</th>
+              <th>Correo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+            while ($data = mysqli_fetch_array($queryData)) { ?>
+            <tr>  
+              <td><?php echo $data['id']; ?></td>
+              <td><?php echo $data['name']; ?></td>
+              <td><?php echo $data['last_name']; ?></td>
+              <td><?php echo $data['dni']; ?></td>
+              <td><?php echo $data['fecha_nac']; ?></td>
+              <td><?php echo $data['correo']; ?></td>
+            </tr>
+          <?php } ?>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -287,30 +283,23 @@
     <p>Sidebar content</p>
     </div>
 </aside>
-<!-- /.control-sidebar -->
-
-<!-- Main Footer -->
-<footer class="main-footer m-0">
-    <!-- To the right -->
-    <div class="float-right d-none d-sm-inline">
-    Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-</footer>
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
-</body>
 </html>
+<script>
+  document.getElementById("formulario").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita que se recargue la página
+    var formData = new FormData(this); // Crea un objeto FormData con los datos del formulario
+    var xhr = new XMLHttpRequest(); // Crea una nueva instancia de XMLHttpRequest
+    xhr.open("POST", "../controller/subir_excel.php", true); // Establece la URL del archivo PHP que procesará la importación
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Aquí puedes manejar la respuesta del servidor si es necesario
+        console.log(xhr.responseText);
+        window.location.href = window.location.href; // Actualiza la página
+      }
+    };
+    xhr.send(formData); // Envía los datos del formulario al servidor
+  });
+</script>
 
 
 
