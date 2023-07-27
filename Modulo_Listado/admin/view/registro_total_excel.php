@@ -6,9 +6,9 @@
 
 	include "../modelo/conexion.php";
 	
-	$output = "";
-	$id = $_GET['id'];
-	if(ISSET($_GET['id'])){
+	$output = "";;
+	if(ISSET($_POST['export'])){
+
 		$output .="
 			<table>
 				<thead>
@@ -21,7 +21,7 @@
 				<tbody>
 		";
 		
-		$query = mysqli_query($conexion, "SELECT id,name,district,population FROM cities");
+		$query = mysqli_query($conexion, "SELECT id,name,district,population FROM cities")or die (mysqli_errno());
 		while($fetch = mysqli_fetch_array($query)){
 			
 		$output .= "

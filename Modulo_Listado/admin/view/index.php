@@ -243,6 +243,7 @@
         <div class="col-8 p-4">
         <h3 class="text-center text-secondary">Clientes registrados</h3>
         <a class="btn btn-primary m-2" href="registrar_clientes.php" role="button">Crear cliente</a>
+        
                 <table class="table">
                     <thead class="bg-info">
                         <tr>

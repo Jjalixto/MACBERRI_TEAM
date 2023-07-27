@@ -4,7 +4,6 @@ require "../controller/sentencia.php";
 ?>
         <table class="table table-striped">
             
-        <a href="../admin/view/registro_total_excel.php">EXCEL</a>
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -27,7 +26,6 @@ require "../controller/sentencia.php";
                             <td><?php echo $data_set['population'] ?></td>
                             <th><a href="../admin/controller/reporte2.php?id=<?php echo $data_set['id']?>">PDF</a></th>
                             <th><a href="../admin/view/create_excel.php?id=<?php echo $data_set['id']?>">EXCEL</a></th>
-                            <th><a href="../admin/view/registro_total_excel.php?id=<?php echo $data_set['id']?>">Exportar a excel</a></th>
                         </tr>
                         
                         <?php }?>

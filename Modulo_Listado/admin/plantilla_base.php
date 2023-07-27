@@ -241,7 +241,10 @@
       <input class="m-2 p-1" type="text" name="register" id="register" onchange="setViewTable">
       <td>   
           <button class="m-2 p-1 btn btn-primary btn-lg" onclick="setViewTable()">Buscar</button>
-          <a href="../admin/controller/reporte_total.php" target="_blank">Exportar todo en PDF</a>
+          <a href="../admin/controller/reporte_total.php" target="_blank"  class=""><p class="btn btn-danger mt-2">Exportar todo en PDF</p></a>
+          <form method="POST" action="view/registro_total_excel.php" class="">
+				<button class="ml-2 mt-2 btn btn-success" name="export"> Exportar a Excel</button>
+			</form>
           <!-- <a href="../admin/view/registro_total_excel.php" name="export">EXCEL</a> -->
         </td>
     </div>
