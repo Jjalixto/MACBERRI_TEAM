@@ -8,9 +8,9 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </head>
@@ -25,7 +25,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/principal/listado.php" class="nav-link">Home</a>
+        <a href="listado.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -66,7 +66,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -82,7 +82,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -98,7 +98,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -158,8 +158,8 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <a href="#" class="brand-link">
+      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin-LTE</span>
     </a>
 
@@ -168,7 +168,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Joel Jalixto</a>
@@ -195,15 +195,16 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="view/index.php" class="nav-link">
+                <a href="index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>R-Personas</p>
                 </a>
                 <li class="nav-item">
-                <a href="view/cliente.php" class="nav-link">
+                <a href="cliente.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cargar datos de clientes</p>
                 </a>
+                <a class="nav-link active" href="closeSesion.php">Close Sesion</a>
               </li>
               </li>
             </ul>
@@ -231,18 +232,18 @@
     <!-- /.content-header -->
 
     <?php 
-    include("modelo/conexion.php");
+    include("../modelo/conexion.php");
     $select_bd = "SELECT * FROM cities";
     $res_consult = mysqli_query($conexion, $select_bd);
 ?>
   <div class="d-flex">
-      <?php include "controller/sentencia.php";?>
+      <?php include "../controller/sentencia.php";?>
       <label class="text-primary h1 ">Busca tu ID</label>
       <input class="m-2 p-1" type="text" name="register" id="register" onchange="setViewTable">
       <td>   
           <button class="m-2 p-1 btn btn-primary btn-lg" onclick="setViewTable()">Buscar</button>
-          <a href="../admin/controller/reporte_total.php" target="_blank"  class=""><p class="btn btn-danger mt-2">Exportar todo en PDF</p></a>
-          <form method="POST" action="view/registro_total_excel.php" class="">
+          <a href="../controller/reporte_total.php" target="_blank"  class=""><p class="btn btn-danger mt-2">Exportar todo en PDF</p></a>
+          <form method="POST" action="../controller/registro_total_excel.php" class="">
 				<button class="ml-2 mt-2 btn btn-success" name="export"> Exportar a Excel</button>
 			</form>
           <!-- <a href="../admin/view/registro_total_excel.php" name="export">EXCEL</a> -->
@@ -256,7 +257,7 @@
                 var dataen = 'register=' + registerInput;
                 $.ajax({
                     type: 'POST',
-                    url: 'view/viewTable.php',
+                    url: 'viewTable.php',
                     data: dataen,
                     success: function(resp){
                         $('#main').html(resp);

@@ -24,8 +24,8 @@ require "../controller/sentencia.php";
                             <td><?php echo $data_set['name'] ?></td>
                             <td><?php echo $data_set['district'] ?></td>
                             <td><?php echo $data_set['population'] ?></td>
-                            <th><a href="../admin/controller/reporte2.php?id=<?php echo $data_set['id']?>">PDF</a></th>
-                            <th><a href="../admin/view/create_excel.php?id=<?php echo $data_set['id']?>">EXCEL</a></th>
+                            <th><a href="../controller/reporte2.php?id=<?php echo $data_set['id']?>">PDF</a></th>
+                            <th><a href="create_excel.php?id=<?php echo $data_set['id']?>">EXCEL</a></th>
                         </tr>
                         
                         <?php }?>
