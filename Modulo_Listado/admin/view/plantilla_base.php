@@ -188,6 +188,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+            <li class="nav-item">
+                <a href="user.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Administrador</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="plantilla_base.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
@@ -204,7 +210,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cargar datos de clientes</p>
                 </a>
-                <a class="nav-link active" href="closeSesion.php">Close Sesion</a>
+                <a class="nav-link" href="closeSesion.php">Close Sesion</a>
               </li>
               </li>
             </ul>

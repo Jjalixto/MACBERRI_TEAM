@@ -1,3 +1,17 @@
+<?php
+
+session_start();
+error_reporting(0);
+
+$validar = $_SESSION['nombre'];
+
+if( $validar == null || $validar = ''){
+
+  header("Location: ../controller/login.php");
+  die();
+  
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +25,16 @@
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -25,12 +43,13 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
+        <a href="listado.php" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -54,6 +73,7 @@
           </form>
         </div>
       </li>
+
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -152,12 +172,15 @@
     </ul>
   </nav>
   <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin-LTE</span>
     </a>
+
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -168,7 +191,7 @@
         <div class="info">
           <a href="#" class="d-block">Joel Jalixto</a>
         </div>
-      </div>
+      </div>  
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -183,105 +206,163 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="user.php" class="nav-link">
+              <li class="nav-item">
+                <a href="user.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Administrador</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="plantilla_base.php" class="nav-link">
+              <a href="plantilla_base.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>City of ID</p>
                 </a>
-              </li>
-              <li class="nav-item">
                 <a href="index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>R-Personas</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="cliente.php" class="nav-link active">
+                <li class="nav-item">
+                <a href="cliente.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Cargar datos de clientes</p>
                 </a>
                 <a class="nav-link" href="closeSesion.php">Close Sesion</a>
               </li>
+              </li>
             </ul>
           </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="cargando">
-    <div class="loader-outter"></div>
-    <div class="loader-inner"></div>
-  </div>
-<div class="container">
-<h3 class="text-center">
-    Exportar de EXCEL a PHP
-</h3>
-<hr>
-<br><br>
-<?php include ('../modelo/conexion.php');?>
-<div class="row">
-    <div class="col-md-7">
-      <form  id = "formulario" action="../controller/subir_excel.php" method="POST" enctype="multipart/form-data" >  
-        <div class="file-input text-center">
-            <input  type="file" name="dataCliente" id="file-input" class="file-input__input"/>
-            <label class="file-input__label" for="file-input">
-              <i class="zmdi zmdi-upload zmdi-hc-2x"></i>
-              <span>Elegir Archivo Excel</span></label>
-          </div>
-      <div class="text-center mt-5">
-          <input type="submit" name="subir" class="btn-enviar" value="Cargar datos"/>
-      </div>
-      </form>
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <!-- <div class="col-sm-6">
+            <h1 class="m-0">Search Id</h1>
+          </div>/.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
-    <div class="col-md-5">
-  <?php
+    <!-- /.content-header -->
+    <title>Usuarios</title>
+</head>
+<br>
+<div class="container is-fluid">
 
-  $sqlClientes = ("SELECT * FROM persona ORDER BY id ASC");
-  $queryData   = mysqli_query($conexion, $sqlClientes);
-  $total_client = mysqli_num_rows($queryData);
-  ?>
-      <h6 class="text-center">
-        Lista de Clientes <strong>(<?php echo $total_client; ?>)</strong>
-      </h6>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Dni</th>
-              <th>Fecha de nac</th>
-              <th>Correo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php 
-            while ($data = mysqli_fetch_array($queryData)) { ?>
-            <tr>  
-              <td><?php echo $data['id']; ?></td>
-              <td><?php echo $data['name']; ?></td>
-              <td><?php echo $data['last_name']; ?></td>
-              <td><?php echo $data['dni']; ?></td>
-              <td><?php echo $data['fecha_nac']; ?></td>
-              <td><?php echo $data['correo']; ?></td>
-            </tr>
-          <?php } ?>
-          </tbody>
-        </table>
-    </div>
+<div class="col-xs-12">
+  		<h1>Bienvenido Administrador <?php echo $_SESSION['nombre']; ?></h1>
+      <br>
+		<h1>Lista de usuarios</h1>
+    <br>
+		<div>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
+				<span class="glyphicon glyphicon-plus"></span>Nuevo usuario<i class="fa fa-plus"></i></a></button>
+      <a class="btn btn-warning" href="closeSesion.php">Log Out
+      <i class="fa fa-power-off" aria-hidden="true"></i>
+        </a>
+		<br>
+    <div class="container-fluid">
+  <form class="d-flex">
   </div>
+  <?php
+$conexion=mysqli_connect("localhost","root","root","world"); 
+$where="";
+
+if(isset($_GET['enviar'])){
+  $busqueda = $_GET['busqueda'];
+
+
+	if (isset($_GET['busqueda']))
+	{
+		$where="WHERE users.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'
+    OR telefono  LIKE'%".$busqueda."%'";
+	}
+  
+}
+
+?>
+      <br>
+  </div>
+
+  <br>
+
+      <table class="table table-striped table-dark table_id ">
+
+                          <thead>    
+                            <tr>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Clave</th>
+                            <th>Telefono</th>
+                            <th>Fecha</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+
+	<?php
+
+$conexion=mysqli_connect("localhost","root","root","world");               
+$SQL="SELECT users.id, users.nombre, users.correo, users.clave, users.telefono,
+users.fecha, permisos.rol FROM users
+LEFT JOIN permisos ON users.rol = permisos.id $where";
+$dato = mysqli_query($conexion, $SQL);
+
+if($dato -> num_rows >0){
+    while($fila=mysqli_fetch_array($dato)){
+    
+?>
+<tr>
+<td><?php echo $fila['nombre']; ?></td>
+<td><?php echo $fila['correo']; ?></td>
+<td><?php echo $fila['clave']; ?></td>
+<td><?php echo $fila['telefono']; ?></td>
+<td><?php echo $fila['fecha']; ?></td>
+<td><?php echo $fila['rol']; ?></td>
+
+<td>
+
+<a class="btn btn-warning" href="editar_user.php?id=<?php echo $fila['id']?> ">
+<i class="fa fa-edit"></i> </a>
+
+  <a class="btn btn-danger"  href="eliminar_user.php?id=<?php echo $fila['id']?>">
+<i class="fa fa-trash"></i></a>
+
+</td>
+</tr>
+
+
+<?php
+}
+}else{
+
+    ?>
+    <tr class="text-center">
+    <td colspan="16">No existen registros</td>
+    </tr>
+
+    
+    <?php
+    
+}
+
+?>
+
+	</body>
+  </table>
+		<?php include('../index.php'); ?>
 </div>
+<!-- /.content-wrapper -->
+
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -290,26 +371,8 @@
     <p>Sidebar content</p>
     </div>
 </aside>
+</body>
 </html>
-<script>
-  document.getElementById("formulario").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita que se recargue la página
-    var formData = new FormData(this); // Crea un objeto FormData con los datos del formulario
-    var xhr = new XMLHttpRequest(); // Crea una nueva instancia de XMLHttpRequest
-    xhr.open("POST", "../controller/subir_excel.php", true); // Establece la URL del archivo PHP que procesará la importación
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        // Aquí puedes manejar la respuesta del servidor si es necesario
-        console.log(xhr.responseText);
-        window.location.href = window.location.href; // Actualiza la página
-      }
-    };
-    xhr.send(formData); // Envía los datos del formulario al servidor
-  });
-</script>
-
-
-
 
 
 
