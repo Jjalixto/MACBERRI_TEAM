@@ -48,11 +48,11 @@ try {
 
     $mail->send();
 
-        header("Location: login.php?message=ok");
+        header("Location: ../login.php?message=ok");
     } catch (Exception $e) {
-        header("Location: login.php?message=error");
+        header("Location: ../login.php?message=error");
     }
 }else{
-    header("Location: login.php?message=notfound");
+    header("Location: ../login.php?message=notfound");
 }
 ?>

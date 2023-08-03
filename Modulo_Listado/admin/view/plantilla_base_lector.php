@@ -1,17 +1,3 @@
-<?php
-
-session_start();
-error_reporting(0);
-
-$validar = $_SESSION['nombre'];
-
-if( $validar == null || $validar = ''){
-
-  header("Location: ../controller/login.php");
-  die();
-  
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,10 +12,7 @@ if( $validar == null || $validar = ''){
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <script src="https://kit.fontawesome.com/df1dc127cb.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -206,27 +189,11 @@ if( $validar == null || $validar = ''){
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="user.php" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Administrador</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="plantilla_base.php" class="nav-link">
+                <a href="plantilla_base_lector.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>City of ID</p>
                 </a>
-                <a href="index.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>R-Personas</p>
-                </a>
-                <li class="nav-item">
-                <a href="cliente.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Cargar datos de clientes</p>
-                </a>
                 <a class="nav-link" href="closeSesion.php">Close Sesion</a>
-              </li>
               </li>
             </ul>
           </li>
@@ -251,114 +218,50 @@ if( $validar == null || $validar = ''){
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <title>Usuarios</title>
-</head>
-<br>
-<div class="container is-fluid">
 
-<div class="col-xs-12">
-  		  <h1>Bienvenido Administrador <?php echo $_SESSION['nombre']; ?></h1>
-      <br>
-		<h1>Lista de usuarios</h1>
-    <br>
-		<div>
-      
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#create">
-				<span class="glyphicon glyphicon-plus"></span>Nuevo usuario<i class="fa fa-plus"></i></a></button>
-      <a class="btn btn-warning" href="closeSesion.php">Log Out<i class="fa fa-power-off" aria-hidden="true"></i>
-        </a>
-		<br>
-    <div class="container-fluid">
-  <form class="d-flex">
-  </div>
-  <?php
-$conexion=mysqli_connect("localhost","root","root","world"); 
-$where="";
-
-if(isset($_GET['enviar'])){
-  $busqueda = $_GET['busqueda'];
-
-
-	if (isset($_GET['busqueda']))
-	{
-		$where="WHERE users.correo LIKE'%".$busqueda."%' OR nombre  LIKE'%".$busqueda."%'
-    OR telefono  LIKE'%".$busqueda."%'";
-	}
-  
-}
-
+    <?php 
+    include("../modelo/conexion.php");
+    $select_bd = "SELECT * FROM cities";
+    $res_consult = mysqli_query($conexion, $select_bd);
 ?>
-      <br>
-  </div>
-
-  <br>
-
-      <table class="table table-striped table-dark table_id ">
-
-                          <thead>    
-                            <tr>
-                            <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Clave</th>
-                            <th>Telefono</th>
-                            <th>Fecha</th>
-                            <th>Rol</th>
-                            <th>Acciones</th>
-                            </tr>
-                          </thead>
-                        <tbody>
-
-	<?php
-
-$conexion=mysqli_connect("localhost","root","root","world");               
-$SQL="SELECT users.id, users.nombre, users.correo, users.clave, users.telefono,
-users.fecha, permisos.rol FROM users
-LEFT JOIN permisos ON users.rol = permisos.id";
-$dato = mysqli_query($conexion, $SQL);
-
-if($dato -> num_rows >0){
-    while($fila=mysqli_fetch_array($dato)){
-    
-?>
-<tr>
-<td><?php echo $fila['nombre']; ?></td>
-<td><?php echo $fila['correo']; ?></td>
-<td><?php echo $fila['clave']; ?></td>
-<td><?php echo $fila['telefono']; ?></td>
-<td><?php echo $fila['fecha']; ?></td>
-<td><?php echo $fila['rol']; ?></td>
-
-<td>
-
-<a class="btn btn-warning" href="editar_user.php?id=<?php echo $fila['id']?> ">
-<i class="fa fa-edit"></i> </a>
-
-  <a class="btn btn-danger"  href="eliminar_user.php?id=<?php echo $fila['id']?>">
-<i class="fa fa-trash"></i></a>
-
-</td>
-</tr>
-
-
-<?php
-}
-}else{
-
-    ?>
-    <tr class="text-center">
-    <td colspan="16">No existen registros</td>
-    </tr>
-
-    
-    <?php
-    
-}
-
-?>
-
-	</body>
-  </table>
-		<?php include('paginap.php'); ?>
+  <div class="d-flex">
+      <?php include "../controller/sentencia.php";?>
+      <label class="text-primary h1 ">Busca tu ID</label>
+      <input class="m-2 p-1" type="text" name="register" id="register" onchange="setViewTable">
+      <td>   
+          <button class="m-2 p-1 btn btn-primary btn-lg" onclick="setViewTable()">Buscar</button>
+          <a href="../controller/reporte_total.php" target="_blank"  class=""><p class="btn btn-danger mt-2">Exportar todo en PDF</p></a>
+          <form method="POST" action="../controller/registro_total_excel.php" class="">
+				<button class="ml-2 mt-2 btn btn-success" name="export"> Exportar a Excel</button>
+			</form>
+          <!-- <a href="../admin/view/registro_total_excel.php" name="export">EXCEL</a> -->
+        </td>
+    </div>
+    <div id="main"></div>
+    <h2 id="msg"></h2>
+        <script>
+            function setViewTable(){
+                var registerInput = document.getElementById("register").value;
+                var dataen = 'register=' + registerInput;
+                $.ajax({
+                    type: 'POST',
+                    url: 'viewTable.php',
+                    data: dataen,
+                    success: function(resp){
+                        $('#main').html(resp);
+                    }
+                });
+            }
+            setViewTable();
+            </script>
+                <!-- <script type ="text/javascript">
+        $(document).ready(function () {
+        $("#register").keyup(function () {
+            var value = $(this).val();
+            $("#numero").val(value);
+        });
+});
+        </script> -->
 </div>
 <!-- /.content-wrapper -->
 
@@ -372,7 +275,3 @@ if($dato -> num_rows >0){
 </aside>
 </body>
 </html>
-
-
-
-

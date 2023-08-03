@@ -1,6 +1,6 @@
 <?php
 
-  include "../modelo/conexion.php";
+$conexion= mysqli_connect("localhost", "root", "root", "world");
 
   if(isset($_POST['registrar'])){
 
@@ -14,15 +14,15 @@
       $clave = trim($_POST['clave']);
       $rol = trim($_POST['rol']);
 
-      $consulta= "INSERT INTO users ( nombre, correo, telefono, fecha, clave, rol)
+        
+      $consulta= "INSERT INTO users (nombre, correo, telefono, fecha, clave, rol)
       VALUES ('$nombre', '$correo','$telefono','$fecha','$clave', '$rol' )";
 
+      echo $consulta;
       mysqli_query($conexion, $consulta);
       mysqli_close($conexion);
 
       header('Location: ../view/user.php');
     }
   }
-
-
 ?>

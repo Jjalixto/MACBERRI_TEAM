@@ -49,8 +49,7 @@ if( $validar == null || $validar = ''){
 			</form>
         
       <table class="table table-striped table-dark " id= "table_id">
-
-                   
+                  
                          <thead>    
                          <tr>
                         <th>Nombre</th>
@@ -58,11 +57,9 @@ if( $validar == null || $validar = ''){
                         <th>Telefono</th>
                         <th>Fecha</th>
                         <th>Rol</th>
-                     
                         </tr>
                         </thead>
                         <tbody>
-
 				<?php
 
 $conexion=mysqli_connect("localhost","root","root","world");               

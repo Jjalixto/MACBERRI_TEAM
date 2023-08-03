@@ -61,13 +61,13 @@ function acceso_user() {
         header('Location: ../view/user.php');
 
     }else if($filas['rol'] == 2){//lector
-        header('Location: ../view/lector.php');
+        header('Location: ../view/plantilla_base_lector.php');
     }
     
     
     else{
 
-        header('Location: login.php');
+        header('Location: ../login.php');
         session_destroy();
 
     }

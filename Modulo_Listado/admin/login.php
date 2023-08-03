@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
 </head>
 
 <body>
-<form action="_functions.php" method="POST">
+<form action="./controller/_functions.php" method="POST">
 <div id="login" >
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
@@ -36,7 +33,7 @@
                                 <input type="submit"class="btn btn-success" value="Ingresar">   
                                 </center>
                                 <div>
-                                    <a href="../view/recoverypass.php">¿Olvidaste tu contraseña?</a>
+                                    <a href="view/recoverypass.php">¿Olvidaste tu contraseña?</a>
                                 </div>
                         </form>
                     </div>
