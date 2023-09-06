@@ -7,7 +7,7 @@ $(function () {
         if ($("#search").val()) {
             let search = $("#search").val(); //se captura el valor
             $.ajax({
-                url: "../controller/Cliente/ClienteController.php",
+                url: "../controller/Cliente/BuscarCliente.php",
                 data: { search },
                 type: "POST",
                 success: function (response) {
@@ -30,7 +30,7 @@ $(function () {
     $("#task-form").submit(e => {
         e.preventDefault();
         const postData = {
-            nombre: $("#nombre").val(), 
+            nombre: $("#nombre").val(),
             apellido: $("#apellido").val(),
             tipo_doc: $("#tipo_doc").val(),
             nro_doc: $("#nro_doc").val(),
@@ -38,8 +38,11 @@ $(function () {
             email: $("#email").val(),
             id: $("#taskId").val(),
         }
+
+        const url = edit === false ? "../controller/Cliente/AgregarCliente.php" : "../controller/Cliente/EditarCliente.php";
+
         $.ajax({
-            url: "../controller/Cliente/ClienteController.php",
+            url: url,
             data: postData,
             type: "POST",
             success: function (response) {
@@ -55,7 +58,7 @@ $(function () {
 
     function fetchTask() {
         $.ajax({
-            url: "../controller/Cliente/ClienteController.php",
+            url: "../controller/Cliente/ListarCliente.php",
             type: "GET",
             success: function (response) {
                 const tasks = JSON.parse(response);
@@ -71,9 +74,9 @@ $(function () {
                     <td>${task.nro_doc}</td>
                     <td>${task.nro_tel_princ}</td>
                     <td>${task.email}</td>
-                    <td class = "d-flex ">
-                        <button class="btn btn-danger task-delete">Eliminar</button>
-                        <button id="task-item" class="btn btn-warning ">Modificar</button>
+                    <td>
+                        <button class="btn btn-danger task-delete ">Eliminar</button>
+                        <button class ="btn btn-warning task-item">Modificar</button>
                     </td>
                 </tr>
                     `;
@@ -87,22 +90,22 @@ $(function () {
         if (confirm("Seguro que quieres eliminar este cliente")) {
             const element = $(this)[0].activeElement.parentElement.parentElement;
             const id = $(element).attr("taskId");
-            $.post("../controller/Cliente/ClienteController.php", { id }, () => {
+            $.post("../controller/Cliente/EliminarCliente.php", { id }, () => {
                 fetchTask();
             })
         }
     })
 
-    $(document).on("click", "#task-item", () => {
+    $(document).on("click", ".task-item", () => {
         const element = $(this)[0].activeElement.parentElement.parentElement;
         const id = $(element).attr("taskId");
-        let url = "../controller/Cliente/ClienteController.php";
+        let url = "../controller/Cliente/ObtenerDatos.php";
         $.ajax({
-            url:url,
-            data: {id},
+            url: url,
+            data: { id },
             type: "POST",
-            success:function(response){
-                if(!response.error){
+            success: function (response) {
+                if (!response.error) {
                     const task = JSON.parse(response);
                     $("#nombre").val(task.nombre)
                     $("#apellido").val(task.apellido)
