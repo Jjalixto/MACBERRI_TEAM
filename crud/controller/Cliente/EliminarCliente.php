@@ -1,6 +1,5 @@
 <?php 
 include "../../model/ModeloBase.php";
-
 //------------------eliminar datos------------------
 if (isset($_POST["id"])) {
     $id = $_POST["id"];

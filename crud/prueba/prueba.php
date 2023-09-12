@@ -1,7 +1,8 @@
 <?php 
-    include "../../model/ModeloBase.php";
-// --------------------buscar datos --------------------------------------------
+
 $search = $_POST["search"];
+
+
 if (!empty($search)) { // negacion, empty vacia, si no esta vacia
     $query = "SELECT * FROM clientes WHERE nombre LIKE '$search%'"; //el like es para que me muestre las coincidencias
     $result = pg_query($conexion, $query);
@@ -28,4 +29,5 @@ if (!empty($search)) { // negacion, empty vacia, si no esta vacia
     $jsonstring = json_encode($json);
     echo $jsonstring;
 }
+
 ?>

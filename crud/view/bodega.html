@@ -13,7 +13,7 @@
     <!-- AUTHOR -->
     <meta name="author" content="Daniel Salinas">
     <!-- TITTLE -->
-    <title>Crud ajax - PHP</title>
+    <title>Bodega</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -51,27 +51,27 @@
                     <div class="card-body">
                         <form id="task-form">
                             <div class="form-group">
-                                <input type="text" id="nombre" placeholder="Nombre del cliente"
+                                <input type="text" id="nombre" placeholder="Nombre"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="apellido" placeholder="Apellido del cliente"
+                                <input type="text" id="direccion" placeholder="Direccion"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="tipo_doc" placeholder="tipo_doc del cliente"
+                                <input type="text" id="producto" placeholder="Producto"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="nro_doc" placeholder="nro_doc del cliente"
+                                <input type="number" id="precio" placeholder="Precio"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="nro_tel_princ" placeholder="nro_tel_princ del cliente"
+                                <input type="number" id="cantidad" placeholder="Cantidad"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="email" id="email" placeholder="email del cliente"
+                                <input type="date" id="fecha_venta" placeholder="Fecha de venta"
                                     class="form-control my-2">
                             </div>
                             <input type="hidden" id="taskId">
@@ -91,21 +91,23 @@
                 <table class="table table-bordered table-sm">
                     <thead>
                         <tr>
-                            <td class="text-center">ID</td>
+                            <td class="text-center">Id</td>
                             <td class="text-center">Nombre</td>
-                            <td class="text-center">Apellido</td>
-                            <td class="text-center">Tipo_doc</td>
-                            <td class="text-center">Nro_doc</td>
-                            <td class="text-center">Nro_tel_princ</td>
-                            <td class="text-center">Email</td>
+                            <td class="text-center">Direccion</td>
+                            <td class="text-center">Producto</td>
+                            <td class="text-center">Precio</td>
+                            <td class="text-center">Cantidad</td>
+                            <td class="text-center">Total</td>
+                            <td class="text-center">Fecha de venta</td>
+
                         </tr>
                     </thead>
-                    <tbody id="tasks"></tbody>
+                    <tbody id="lista"></tbody>
                 </table>
             </div>
         </div>
     </div>
-    <script src="../controller/Cliente/Cliente.js"></script>
+    <script src="../controller/Transacciones/Transacciones.js"></script>
 
 </body>
 

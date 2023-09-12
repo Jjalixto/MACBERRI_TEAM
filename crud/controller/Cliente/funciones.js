@@ -1,7 +1,6 @@
-
-function buscarClientes() {
+function buscarCliente() {
     $("#task-result").hide();
-    // fetchTask();
+    fetchTask();
     let edit = false;
 
     $("#search").keyup(() => {
@@ -27,7 +26,38 @@ function buscarClientes() {
     })
 }
 
-function guardarCliente() {
+function fetchTask() {
+    $.ajax({
+        url: "../controller/Cliente/ListarCliente.php",
+        type: "GET",
+        success: function (response) {
+            const tasks = JSON.parse(response);
+
+            let template = ``;
+            tasks.forEach(task => {
+                template += `
+            <tr taskId="${task.id}">
+                <td>${task.id}</td>
+                <td>${task.nombre}</td>
+                <td>${task.apellido}</td>
+                <td>${task.tipo_doc}</td>
+                <td>${task.nro_doc}</td>
+                <td>${task.nro_tel_princ}</td>
+                <td>${task.email}</td>
+                <td>
+                    <button class="btn btn-danger task-delete ">Eliminar</button>
+                    <button class ="btn btn-warning task-item">Modificar</button>
+                </td>
+            </tr>
+                `;
+            })
+            $("#tasks").html(template);
+        }
+    })
+}
+
+
+function guardarDatos() {
     $("#task-form").submit(e => {
         e.preventDefault();
         const postData = {
@@ -56,37 +86,8 @@ function guardarCliente() {
     })
 }
 
-    function fetchTask() {
-        $.ajax({
-            url: "../controller/Cliente/ListarCliente.php",
-            type: "GET",
-            success: function (response) {
-                const tasks = JSON.parse(response);
-                let template = ``;
-                tasks.forEach(task => {
-                    template += `
-                <tr taskId="${task.id}">
-                    <td>${task.id}</td>
-                    <td>${task.nombre}</td>
-                    <td>${task.apellido}</td>
-                    <td>${task.tipo_doc}</td>
-                    <td>${task.nro_doc}</td>
-                    <td>${task.nro_tel_princ}</td>
-                    <td>${task.email}</td>
-                    <td>
-                        <button class="btn btn-danger task-delete ">Eliminar</button>
-                        <button class ="btn btn-warning task-item">Modificar</button>
-                    </td>
-                </tr>
-                    `;
-                })
-                $("#tasks").html(template);
-            }
-        })
-    }
 
-
-function deleteCliente() {
+function eliminarCliente() {
     $(document).on("click", ".task-delete", () => {
         if (confirm("Seguro que quieres eliminar este cliente")) {
             const element = $(this)[0].activeElement.parentElement.parentElement;
@@ -100,12 +101,12 @@ function deleteCliente() {
 
 function obtenerCliente() {
     $(document).on("click", ".task-item", () => {
-        const element = $(this)[0].activeElement.parentElement.parentElement;
-        const id = $(element).attr("taskId");
+        const elementObt = $(this)[0].activeElement.parentElement.parentElement;
+        const idObt = $(elementObt).attr("taskId");
         let url = "../controller/Cliente/ObtenerDatos.php";
         $.ajax({
             url: url,
-            data: { id },
+            data: { idObt },
             type: "POST",
             success: function (response) {
                 if (!response.error) {
@@ -117,6 +118,7 @@ function obtenerCliente() {
                     $("#nro_tel_princ").val(task.nro_tel_princ)
                     $("#email").val(task.email)
                     $("#taskId").val(task.id)
+                    fetchTask();
                     edit = true;
                 }
             }
@@ -124,46 +126,10 @@ function obtenerCliente() {
     })
 }
 
+
 window.onload = function () {
-    buscarClientes(); //listo
-    guardarCliente(); //listo
-    deleteCliente();  //listo
-    obtenerCliente(); //listo
-    // listarCliente(); //listo
-    fetchTask(); //listo
+    buscarCliente();
+    guardarDatos();
+    eliminarCliente();
+    obtenerCliente();
 }
-// function datosClientesAll() {
-//     // console.log("dentro de la funcion");
-//     const xhttp = new XMLHttpRequest();
-//     xhttp.open('GET', '../controller/Cliente/ClienteController.php', true);
-
-//     xhttp.send();
-
-//     xhttp.onreadystatechange = function () {
-
-//         if (this.readyState == 4 && this.status == 200) {
-
-//             let datos = JSON.parse(this.responseText);
-//             // console.log(datos);
-//             let res = document.querySelector('#res');
-//             res.innerHTML = ''; //esto ayuda para que comienze en cero el
-
-//             for (let item of datos) {
-//                 // console.log(item);
-//                 res.innerHTML += `
-
-//             <tr>
-//                 <td>${item.id}</td>
-//                 <td>${item.nombre}</td>
-//                 <td>${item.apellido}</td>
-//                 <td>${item.tipo_doc}</td>
-//                 <td>${item.nro_doc}</td>
-//                 <td>${item.nro_tel_princ}</td>
-//                 <td>${item.email}</td>
-//             </tr>
-//             `
-//             }
-//         }
-//     }
-// };
-
