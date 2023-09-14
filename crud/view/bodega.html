@@ -51,29 +51,23 @@
                     <div class="card-body">
                         <form id="task-form">
                             <div class="form-group">
-                                <input type="text" id="nombre" placeholder="Nombre"
+                                <input type="text" id="empresa" placeholder="empresa" class="form-control my-2">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="tipo_producto" placeholder="tipo_producto"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="direccion" placeholder="Direccion"
+                                <input type="text" id="direccion" placeholder="direccion" class="form-control my-2">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="nro_tel_princ" placeholder="nro_tel_princ"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="producto" placeholder="Producto"
-                                    class="form-control my-2">
+                                <input type="email" id="email" placeholder="email" class="form-control my-2">
                             </div>
-                            <div class="form-group">
-                                <input type="number" id="precio" placeholder="Precio"
-                                    class="form-control my-2">
-                            </div>
-                            <div class="form-group">
-                                <input type="number" id="cantidad" placeholder="Cantidad"
-                                    class="form-control my-2">
-                            </div>
-                            <div class="form-group">
-                                <input type="date" id="fecha_venta" placeholder="Fecha de venta"
-                                    class="form-control my-2">
-                            </div>
+
                             <input type="hidden" id="taskId">
                             <button type="submit" class="btn btn-primary text-center w-100">Guardar Cliente</button>
                         </form>
@@ -92,14 +86,11 @@
                     <thead>
                         <tr>
                             <td class="text-center">Id</td>
-                            <td class="text-center">Nombre</td>
+                            <td class="text-center">Empresa</td>
+                            <td class="text-center">Tipo_producto</td>
                             <td class="text-center">Direccion</td>
-                            <td class="text-center">Producto</td>
-                            <td class="text-center">Precio</td>
-                            <td class="text-center">Cantidad</td>
-                            <td class="text-center">Total</td>
-                            <td class="text-center">Fecha de venta</td>
-
+                            <td class="text-center">Nro_tel_princ</td>
+                            <td class="text-center">Email</td>
                         </tr>
                     </thead>
                     <tbody id="lista"></tbody>
@@ -107,8 +98,138 @@
             </div>
         </div>
     </div>
-    <script src="../controller/Bodega/bodega.js"></script>
 
+    <script>
+
+
+            function buscarProducto() {
+            $("#task-result").hide();
+            fetchTasks();
+
+            let edit = false;
+            $("#search").keyup(() => {
+                if ($("#search").val()) {
+                    let search = $("#search").val();
+
+                    $.ajax({
+                        url: "../controller/Bodega/BuscarProducto.php",
+                        data: { search },
+                        type: "POST",
+                        success: function (response) {
+                            if (!response.error) {
+                                let clientes = JSON.parse(response);
+                                let template = ``;
+                                clientes.forEach(cliente => {
+                                    template += `<li><a href="#" class="task-item">${cliente.empresa}</a></li>`
+                                });
+                                $("#task-result").show();
+                                $("#container").html(template)
+                            }
+                        }
+                    })
+                }
+            })
+            }
+
+            function fetchTasks() {
+                $.ajax({
+                    url: "../controller/Bodega/ListarProducto.php",
+                    type: "GET",
+                    success: function (response) {
+                        const clientes = JSON.parse(response);
+                        let template = ``;
+                        clientes.forEach(empresa => {
+                            template += `
+            <tr empresaId="${empresa.id}">
+                <td>${empresa.id}</td>
+                <td>${empresa.empresa}</td>
+                <td>${empresa.tipo_producto}</td>
+                <td>${empresa.direccion}</td>
+                <td>${empresa.nro_tel_princ}</td>
+                <td>${empresa.email}</td>
+                <td class= "d-flex">
+                <button class="btn btn-danger task-delete ">Eliminar</button>
+                <button class ="btn btn-warning task-item">Modificar</button>
+                </td>
+            </tr>
+            `;
+                        })
+                        $("#lista").html(template);
+                    }
+                })
+            }
+
+            function guardarProducto() {
+            $("#task-form").submit(e => {
+                e.preventDefault();
+                const postData = {
+                    empresa: $("#empresa").val(),
+                    tipo_producto: $("#tipo_producto").val(),
+                    direccion: $("#direccion").val(),
+                    nro_tel_princ: $("#nro_tel_princ").val(),
+                    email: $("#email").val(),
+                    id: $("#taskId").val(),
+                }
+                const url = edit === false ? "../controller/Bodega/AgregarProducto.php" : "../controller/Bodega/EditarProducto.php";
+
+                $.ajax({
+                    url: url,
+                    data: postData,
+                    type: "POST",
+                    success: function (response) {
+                        if (!response.error) {
+                            fetchTasks();
+                            $("#task-form").trigger("reset");
+                        }
+                    }
+                })
+            })
+        }
+
+            function obtenerProducto() {
+            $(document).on("click", ".task-item", () => {
+                const element = $(this)[0].activeElement.parentElement.parentElement;
+                const id = $(element).attr("empresaId");
+                let url = "../controller/Bodega/ObtenerProducto.php";
+                $.ajax({
+                    url: url,
+                    data: { id },
+                    type: "POST",
+                    success: function (response) {
+                        if (!response.error) {
+                            const task = JSON.parse(response);
+                            $("#empresa").val(task.empresa)
+                            $("#tipo_producto").val(task.tipo_producto)
+                            $("#direccion").val(task.direccion)
+                            $("#nro_tel_princ").val(task.nro_tel_princ)
+                            $("#email").val(task.email)
+                            $("#taskId").val(task.id)
+                            edit = true;
+                        }
+                    }
+                })
+            })
+            }
+
+            function deleteProducto() {
+            $(document).on("click", ".task-delete", () => {
+                if (confirm("Seguro que quieres eliminar este cliente")) {
+                    const element = $(this)[0].activeElement.parentElement.parentElement;
+                    const id = $(element).attr("empresaId");
+                    $.post("../controller/Bodega/EliminarProducto.php", { id }, () => {
+                        fetchTasks();
+                    })
+                }
+            })
+        }
+
+        window.onload = function(){
+            buscarProducto();
+            guardarProducto();
+            obtenerProducto();
+            deleteProducto();
+        }
+    </script>
 </body>
 
 </html>

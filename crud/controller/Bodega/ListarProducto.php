@@ -1,11 +1,10 @@
 <?php
 // --------------------listar datos --------------------------------------------
 
-include "../../model/TransaccionModelo.php";
+include "../../model/ModeloBase.php";
 
 //listar clientes
-    $consulta = "SELECT clientes.cliente_id, clientes.nombre,clientes.direccion, productos.nombre_producto, productos.precio, ventas.cantidad, ventas.fecha_venta, ventas.cantidad * productos.precio AS total FROM clientes JOIN ventas ON clientes.cliente_id = ventas.cliente_id
-JOIN productos ON ventas.producto_id = productos.producto_id";
+    $consulta = "SELECT * FROM proveedores";
     $resultado = pg_query($conexion, $consulta);
 
     if (!$resultado) {
@@ -16,14 +15,12 @@ JOIN productos ON ventas.producto_id = productos.producto_id";
 
     while ($fila = pg_fetch_array($resultado)) {
         $json[] = array(
-            "cliente_id" => $fila['cliente_id'],
-            "nombre" => $fila['nombre'],
+            "id" => $fila['id'],
+            "empresa" => $fila['empresa'],
+            "tipo_producto" => $fila['tipo_producto'],
             "direccion" => $fila['direccion'],
-            "nombre_producto" => $fila['nombre_producto'],
-            "precio" => $fila['precio'],
-            "cantidad" => $fila['cantidad'],
-            "total" => $fila['total'],
-            "fecha_venta" => $fila['fecha_venta'],
+            "nro_tel_princ" => $fila['nro_tel_princ'],
+            "email" => $fila['email'],
         );
     }
 

@@ -3,7 +3,7 @@
 // --------------------buscar datos --------------------------------------------
 $search = $_POST["search"];
 if (!empty($search)) { // negacion, empty vacia, si no esta vacia
-    $query = "SELECT * FROM facturas WHERE numero LIKE '$search%'"; //el like es para que me muestre las coincidencias
+    $query = "SELECT * FROM proveedores WHERE empresa LIKE '$search%'"; //el like es para que me muestre las coincidencias
     $result = pg_query($conexion, $query);
 
     if (!$result) {
@@ -16,10 +16,11 @@ if (!empty($search)) { // negacion, empty vacia, si no esta vacia
     while ($row = pg_fetch_array($result)) {
         $json[] = array(
             "id" => $row["id"],
-            "numero" => $row["numero"],
-            "codigo" => $row["codigo"],
-            "fecha" => $row["fecha"],
-            "importe_total" => $row["importe_total"],
+            "empresa" => $row["empresa"],
+            "tipo_producto" => $row["tipo_producto"],
+            "direccion" => $row["direccion"],
+            "nro_tel_princ" => $row["nro_tel_princ"],
+            "email" => $row["email"],
         );
     }
     //aqui se transforma a un objeto json

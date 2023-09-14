@@ -11,8 +11,8 @@ if (isset($_POST["id"])) {
     $task_nro_tel_princ = $_POST["nro_tel_princ"];
     $task_email = $_POST["email"];
 
-    $queryc= "UPDATE clientes SET nombre = '$task_nombre',apellido = '$task_apellido',tipo_doc = '$task_tipo_doc', nro_doc = '$task_nro_doc', nro_tel_princ = '$task_nro_tel_princ', email = '$task_email' WHERE id = '$task_id'";
-    $result = pg_query($conexion, $queryc);
+    $query= "UPDATE clientes SET nombre = '$task_nombre',apellido = '$task_apellido',tipo_doc = '$task_tipo_doc', nro_doc = '$task_nro_doc', nro_tel_princ = '$task_nro_tel_princ', email = '$task_email' WHERE id = '$task_id'";
+    $result = pg_query($conexion, $query);
 
     if (!$result) {
         die("error en la consulta" . pg_last_error($conexion));

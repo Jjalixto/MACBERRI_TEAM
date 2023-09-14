@@ -7,7 +7,7 @@ include "../../model/ModeloBase.php";
 if(isset($_POST["id"])){ // negacion, empty vacia, si no esta vacia
 
     $id = $_POST["id"];
-    $query = "SELECT * FROM facturas WHERE id = {$id}";  //el like es para que me muestre las coincidencias
+    $query = "SELECT * FROM proveedores WHERE id = '$id'";  //el like es para que me muestre las coincidencias
     $result = pg_query($conexion,$query);
 
     if(!$result){
@@ -19,10 +19,11 @@ if(isset($_POST["id"])){ // negacion, empty vacia, si no esta vacia
     while($fila = pg_fetch_array($result)){
         $json[] = array(
             "id" => $fila["id"],
-            "numero" => $fila["numero"],
-            "codigo" => $fila["codigo"],
-            "fecha" => $fila["fecha"],
-            "importe_total" => $fila["importe_total"],
+            "empresa" => $fila["empresa"],
+            "tipo_producto" => $fila["tipo_producto"],
+            "direccion" => $fila["direccion"],
+            "nro_tel_princ" => $fila["nro_tel_princ"],
+            "email" => $fila["email"],
         );
     }
     //aqui se transforma a un objeto json

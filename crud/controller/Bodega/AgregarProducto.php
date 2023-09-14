@@ -1,21 +1,21 @@
 <?php 
 
-include "../../model/TransaccionModelo.php";
+include "../../model/ModeloBase.php";
 
-if (isset($_POST["numero"])) {
-    $numero = $_POST["numero"];
-    $codigo = $_POST["codigo"];
-    $fecha = $_POST["fecha"];
-    $hora = $_POST["hora"];
-    $importe_total = $_POST["importe_total"];
+if (isset($_POST["empresa"])) {
+    $empresa = $_POST["empresa"];
+    $tipo_producto = $_POST["tipo_producto"];
+    $direccion = $_POST["direccion"];
+    $nro_tel_princ = $_POST["nro_tel_princ"];
+    $email = $_POST["email"];
 
-    $query = "INSERT INTO facturas(numero,codigo,fecha,hora,importe_total) VALUES('$numero','$codigo','$codigo','$fecha','$hora','$importe_total')";
+    $query = "INSERT INTO proveedores(empresa,tipo_producto,direccion ,nro_tel_princ ,email) VALUES('$empresa','$tipo_producto','$direccion','$nro_tel_princ','$email')";
     $result = pg_query($conexion, $query);
 
     if (!$result) {
         die("error en la consulta" . pg_last_error($conexion));
     }
-    echo "factura agregada";
+    echo "producto agregado";
 }
 
 ?>
