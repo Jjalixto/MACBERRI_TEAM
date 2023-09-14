@@ -1,7 +1,8 @@
 <?php 
 include "../../model/ModeloBase.php";
 // --------------------listar datos --------------------------------------------
-$allquery = "SELECT * FROM clientes";
+
+$allquery = "SELECT * FROM facturas";
 $resultadoAll = pg_query($conexion, $allquery);
 
 if (!$resultadoAll) {
@@ -10,17 +11,18 @@ if (!$resultadoAll) {
 
 $json = array();
 
+//array
 while ($row = pg_fetch_array($resultadoAll)) {
     $json[] = array(
         "id" => $row["id"],
-        "nombre" => $row["nombre"],
-        "apellido" => $row["apellido"],
-        "tipo_doc" => $row["tipo_doc"],
-        "nro_doc" => $row["nro_doc"],
-        "nro_tel_princ" => $row["nro_tel_princ"],
-        "email" => $row["email"],
+        "numero" => $row["numero"],
+        "codigo" => $row["codigo"],
+        "fecha" => $row["fecha"],
+        "importe_total" => $row["importe_total"],
     );
 }
+
+//aqui se transforma a un objeto json
 $jsonstring = json_encode($json);
 echo $jsonstring;
 

@@ -13,7 +13,7 @@
     <!-- AUTHOR -->
     <meta name="author" content="Daniel Salinas">
     <!-- TITTLE -->
-    <title>Bodega</title>
+    <title>Factura</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -51,27 +51,19 @@
                     <div class="card-body">
                         <form id="task-form">
                             <div class="form-group">
-                                <input type="text" id="nombre" placeholder="Nombre"
+                                <input type="number" id="numero" placeholder="numero"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="direccion" placeholder="Direccion"
+                                <input type="text" id="codigo" placeholder="codigo"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="text" id="producto" placeholder="Producto"
+                                <input type="date" id="fecha" placeholder="fecha"
                                     class="form-control my-2">
                             </div>
                             <div class="form-group">
-                                <input type="number" id="precio" placeholder="Precio"
-                                    class="form-control my-2">
-                            </div>
-                            <div class="form-group">
-                                <input type="number" id="cantidad" placeholder="Cantidad"
-                                    class="form-control my-2">
-                            </div>
-                            <div class="form-group">
-                                <input type="date" id="fecha_venta" placeholder="Fecha de venta"
+                                <input type="number" id="importe_total" placeholder="importe_total"
                                     class="form-control my-2">
                             </div>
                             <input type="hidden" id="taskId">
@@ -92,14 +84,10 @@
                     <thead>
                         <tr>
                             <td class="text-center">Id</td>
-                            <td class="text-center">Nombre</td>
-                            <td class="text-center">Direccion</td>
-                            <td class="text-center">Producto</td>
-                            <td class="text-center">Precio</td>
-                            <td class="text-center">Cantidad</td>
-                            <td class="text-center">Total</td>
-                            <td class="text-center">Fecha de venta</td>
-
+                            <td class="text-center">Numero</td>
+                            <td class="text-center">Codigo</td>
+                            <td class="text-center">Fecha</td>
+                            <td class="text-center">Importe Total</td>
                         </tr>
                     </thead>
                     <tbody id="lista"></tbody>
@@ -107,7 +95,7 @@
             </div>
         </div>
     </div>
-    <script src="../controller/Bodega/bodega.js"></script>
+    <script src="../controller/Factura/Factura.js"></script>
 
 </body>
 
