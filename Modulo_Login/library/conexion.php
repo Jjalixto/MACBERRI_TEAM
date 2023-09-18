@@ -1,22 +1,5 @@
 
 <?php 
-    include_once  'config/config.php';
-
-    class Conexion{
-        public static function conect(){
-            // $mysql = new mysqli('localhost', 'root', 'root', 'loginbd');
-            // $mysql->set_charset('utf8');
-            $mysql = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-            $mysql->set_charset(DB_CHARSET);
-
-            if(mysqli_connect_errno()){
-                echo "Error connecting to:".mysqli_connect_errno();
-                }   
-            // else{
-            //     echo "Connection established";
-            // }
-            return $mysql;
-        }
-    }
-    // print_r(Conexion::conect());
+$conexion = new mysqli("localhost","root","root","world");
+$conexion->set_charset("utf8");
 ?>
