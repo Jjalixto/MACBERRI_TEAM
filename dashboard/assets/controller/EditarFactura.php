@@ -16,5 +16,5 @@ if (isset($_POST["id"])) {
     }
     echo "la factura a sido actualizada";
 }
-
+echo "hola";
 ?>

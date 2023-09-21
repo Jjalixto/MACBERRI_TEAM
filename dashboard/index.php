@@ -14,12 +14,15 @@
     <link rel="stylesheet" href="assets/css/shared/iconly.css">
 
     <!-- Ajax - Query -->
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
 </head>
 
 <body>
@@ -449,92 +452,49 @@
             </div>
             <div class="page-content">
                 <section class="row">
-                    <div class="col-12 col-lg-9">
+                    <div class="col-12 col-lg-12 ">
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
-                                    <div class="card-body px-4 py-4-5">
-                                        <div class="row">
-                                            <div
-                                                class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                <div class="stats-icon purple mb-2">
-                                                    <i class="iconly-boldShow"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Profile Views</h6>
-                                                <h6 class="font-extrabold mb-0">112.000</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
-                                    <div class="card-body px-4 py-4-5">
-                                        <div class="row">
-                                            <div
-                                                class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                <div class="stats-icon blue mb-2">
-                                                    <i class="iconly-boldProfile"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Followers</h6>
-                                                <h6 class="font-extrabold mb-0">183.000</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
-                                    <div class="card-body px-4 py-4-5">
-                                        <div class="row">
-                                            <div
-                                                class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                <div class="stats-icon green mb-2">
-                                                    <i class="iconly-boldAdd-User"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Following</h6>
-                                                <h6 class="font-extrabold mb-0">80.000</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
-                                    <div class="card-body px-4 py-4-5">
-                                        <div class="row">
-                                            <div
-                                                class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
-                                                <div class="stats-icon red mb-2">
-                                                    <i class="iconly-boldBookmark"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="text-muted font-semibold">Saved Post</h6>
-                                                <h6 class="font-extrabold mb-0">112</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 ">
+                            <div class="col-12">
                                 <div class="card ">
                                     <div class="card-header d-flex justify-content-center pb-1">
                                         <h4>Registro de Facturas</h4>
                                     </div>
-
                                     <div class="container my-1">
-                                        <div class="row p-2 justify-content-center">
+                                        <div class="row col-12 m-0 justify-content-center">
                                             <div class="col-md-7">
-                                                <table class="table table-bordered table-sm">
+                                                <div class="d-flex justify-content-between ">
+                                                        <button type="button" class="btn btn-info task-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Añadir Factura</button>
+                                                        <button class="btn btn-danger">Pdf</button>
+                                                        <button class="btn btn-success">Excel</button>
+                                                    </div>
+                                                    <br>
+                                            </div>
+                                            <hr>
+                                            <input id='myInput' onkeyup='searchTable()' type='text'>
+
+                                                <table id="tabla" class="table table-bordered table-sm">
                                                     <thead>
                                                         <tr>
                                                             <td class="text-center">Id</td>
@@ -543,6 +503,14 @@
                                                             <td class="text-center">Fecha</td>
                                                             <td class="text-center">Importe Total</td>
                                                             <td class="text-center">Accion</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input id="busqueda" type="text" class="text-center" placeholder="buscar"></td>
+                                                            <td><input id="cod" type="text" class="text-center" placeholder="buscar"></td>
+                                                            <td><input type="text" class="text-center" placeholder="buscar"></td>
+                                                            <td><input type="text" class="text-center" placeholder="buscar"></td>
+                                                            <td><input type="text" class="text-center" placeholder="buscar"></td>
+                                                            <td></td>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="lista"></tbody>
@@ -554,16 +522,50 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-xl-4">
+
+                            <div class="col-12 col-xl-8">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Registrar Factura
-                                        </h4>
+                                        <h4>Buscar Factura</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="row">
+                                        <div class="table-responsive">
 
-                                            <form id="task-form">
+                                            <table id="" class="table table-bordered table-sm">
+                                                    <thead>
+                                                    <div class="d-flex">
+
+                                                        <input type="search" id="busqueda" class="mt-2"  placeholder="Buscar" />
+                                                        <input type="search" id="cod" class="mt-2"  placeholder="Buscar" />
+                                                        <input type="search" id="cod" class="mt-2"  placeholder="Buscar" />
+
+                                                        </div>
+                                                        <hr>
+                                                        <tr >
+                                                            <td class="text-center">Number</td>
+                                                            <td class="text-center">Codigo</td>
+                                                            <td class="text-center">Fecha</td>
+                                                            <td class="text-center">Pdf</td>
+                                                            <td class="text-center">Excel</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="container">
+
+                                                    </tbody>
+                                                </table>
+                                                <div class="card-body">
+
+                                        <div class="table-responsive">
+                                                <!-- Modal -->
+                                                <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    <form id="task-form">
                                                 <div class="form-group">
                                                     <input type="text" id="numero" placeholder="numero"
                                                         class="form-control my-2">
@@ -580,106 +582,39 @@
                                                     <input type="text" id="importe_total" placeholder="importe_total"
                                                         class="form-control my-2">
                                                 </div>
-                                                <input type="hidden" id="taskId">
+                                                <input type="hidden" id="taskId" >
+
                                                 <button type="submit" class="btn btn-primary text-center w-100">Guardar
                                                     Cliente</button>
+                                                    <button type="button" class="btn btn-secondary text-center  w-100" data-bs-dismiss="modal">Close</button>
                                             </form>
+                                                    </div>
+                                                    <div class="modal-footer">
 
-                                            <div class="col-12">
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
                                             </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Buscar Factura</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <div class="d-flex">
-                                                <input type="search" id="search" placeholder="Buscar" class="rounded l-2 m-2">
-                                                <button type="submit" class="btn btn-warning m-2">Buscar</button>
                                             </div>
                                             <div class="card my-4" id="task-result">
                                                 <div class="card-body">
-                                                    <ul id="container"></ul>
+                                                    <ul id=""></ul>
                                                 </div>
                                             </div>
                                             <table class="table table-hover table-lg">
                                             </table>
                                         </div>
                                     </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="card">
-                            <div class="card-body py-4 px-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar avatar-xl">
-                                        <img src="assets/images/faces/1.jpg" alt="Face 1">
-                                    </div>
-                                    <div class="ms-3 name">
-                                        <h5 class="font-bold">John Duck</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Recent Messages</h4>
-                            </div>
-                            <div class="card-content pb-4">
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="assets/images/faces/4.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="assets/images/faces/5.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">@imdean</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="assets/images/faces/1.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">@dodoljohn</h6>
-                                    </div>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-outline-primary font-bold mt-3'>Start
-                                        Conversation</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Visitors Profile</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-visitors-profile"></div>
-                            </div>
-                        </div>
-                    </div>
+           </div>
                 </section>
             </div>
-
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="float-start">
@@ -693,9 +628,10 @@
             </footer>
         </div>
     </div>
+
+
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/app.js"></script>
-
     <!-- Need: Apexcharts -->
     <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="assets/js/pages/dashboard.js"></script>
@@ -704,8 +640,6 @@
         function buscarFactura() {
             $("#task-result").hide();
             fetchTask();
-            let edit = false;
-
             $("#search").keyup(() => {
                 if ($("#search").val()) {
                     let search = $("#search").val(); //se captura el valor
@@ -730,6 +664,7 @@
         }
 
         function fetchTask() {
+            edit = false;
             $.ajax({
                 url: "assets/controller/ListarFactura.php",
                 type: "GET",
@@ -744,9 +679,13 @@
                     <td>${task.codigo}</td>
                     <td>${task.fecha}</td>
                     <td>${task.importe_total}</td>
-                    <td class="d-flex">
+                    <td class="d-flex justify-content-around ">
+                        <button type="button" class="btn btn-primary task-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Modificar
+                        </button>
                         <button class="btn btn-danger task-delete ">Eliminar</button>
-                        <button class ="btn btn-warning task-item">Modificar</button>
+                        <button class="btn btn-success">Estado</button>
+
                     </td>
                 </tr>
                     `;
@@ -756,9 +695,7 @@
             })
         }
 
-
-
-        function guardarFactura() {
+        $(function() {
             $("#task-form").submit(e => {
                 e.preventDefault();
                 const postData = {
@@ -782,7 +719,7 @@
                     }
                 })
             })
-        }
+        })
 
         function deleteFactura() {
             $(document).on("click", ".task-delete", () => {
@@ -812,7 +749,9 @@
                             $("#codigo").val(task.codigo)
                             $("#fecha").val(task.fecha)
                             $("#importe_total").val(task.importe_total)
+                            $("#taskId").val(task.id)
                             edit = true;
+
                         }
                     }
                 })
@@ -821,11 +760,80 @@
 
         window.onload = function () {
             buscarFactura(); //listo
-            guardarFactura(); //listo
             deleteFactura();  //listo
             // obtenerFactura(); //listo
         }
     </script>
+    <script>
+        $(function () {
+        $("#task-result").hide();
+
+            $("#busqueda").keyup(() => {
+                if ($("#busqueda").val()) {
+                    let recorrer = $("#busqueda").val(); //se captura el valor
+                    $.ajax({
+                        url: "assets/controller/FiltradoFactura.php",
+                        data: { recorrer },
+                        type: "POST",
+                        success: function (response) {
+                            if (!response.error) {
+                                let num = JSON.parse(response);
+                                let template = ``;
+                                num.forEach(imp => {
+                                    template += `
+                                                <tr>
+                                                     <td>${imp.numero}</td>
+                                                     <td>${imp.codigo}</td>
+                                                     <td>${imp.fecha}</td>
+                                                     <td><a href="assets/controller/PDF/ReportePdf.php?id=${imp.id}">Pdf</a></td>
+                                                     <td><a href="assets/controller/EXCEL/ReporteExcel.php?id=${imp.id}">Excel</a></td>
+                                                 </tr>
+                                    `
+                                });
+                                $("#task-result").show();
+                                $("#container").html(template);
+                            }
+                        }
+                    })
+                }
+            })
+
+        $("#task-result").hide();
+            $("#cod").keyup(() => {
+                if ($("#cod").val()) {
+                    let cod = $("#cod").val(); //se captura el valor
+                    $.ajax({
+                        url: "assets/controller/FiltrarCodigo.php",
+                        data: { cod },
+                        type: "POST",
+                        success: function (response) {
+                            if (!response.error) {
+                                let num = JSON.parse(response);
+                                let template = ``;
+                                num.forEach(imp => {
+                                    template += `
+                                                <tr>
+                                                     <td>${imp.numero}</td>
+                                                     <td>${imp.codigo}</td>
+                                                     <td>${imp.fecha}</td>
+                                                     <td><a href="assets/controller/PDF/ReportePdf.php?id=${imp.id}">Pdf</a></td>
+                                                     <td><a href="assets/controller/EXCEL/ReporteExcel.php?id=${imp.id}">Excel</a></td>
+                                                 </tr>
+                                    `
+                                });
+                                $("#task-result").show();
+                                $("#container").html(template);
+                            }
+                        }
+                    })
+                }
+            })
+        });
+    </script>
+    <script>
+
+
+</script>
 </body>
 
 </html>

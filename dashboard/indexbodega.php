@@ -534,6 +534,8 @@
                                     <div class="container my-1">
                                         <div class="row p-2 justify-content-center">
                                             <div class="col-md-10">
+                                            <input id='myInput' onkeyup='searchTable()' type='text'>
+
                                                 <table class="table table-bordered table-sm">
                                                     <thead>
                                                         <tr>
